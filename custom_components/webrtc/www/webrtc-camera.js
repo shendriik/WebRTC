@@ -10,6 +10,17 @@ class WebRTCCamera extends VideoRTC {
     setConfig(config) {
         if (!config.url && !config.entity && !config.streams) throw new Error('Missing `url` or `entity` or `streams`');
 
+        if (config.ice_servers !== undefined) {
+            if (!Array.isArray(config.ice_servers)) {
+                throw new Error('`ice_servers` must be an array');
+            }
+
+            this.pcConfig = {
+                ...this.pcConfig,
+                iceServers: config.ice_servers,
+            };
+        }
+
         if (config.background) this.background = config.background;
 
         if (config.intersection === 0) this.visibilityThreshold = 0;
