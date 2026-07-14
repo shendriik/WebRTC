@@ -174,6 +174,14 @@ shortcuts:  # custom shortcuts, default none
   service: switch.toggle
   service_data:
     entity_id: switch.camera_record
+
+ice_servers: # optional ICE servers passed to the browser RTCPeerConnection. Useful when both the browser and go2rtc require TURN relay.
+  - urls:
+      - stun:stun.l.google.com:19302
+  - urls:
+      - turn:turn.example.com:3478?transport=udp
+    username: user
+    credential: password
 ```
 
 Pan, tilt, zoom controls: [PTZ config examples](https://github.com/AlexxIT/WebRTC/wiki/PTZ-Config-Examples).
